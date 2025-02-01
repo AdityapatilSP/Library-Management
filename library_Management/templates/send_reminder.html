@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send Reminder</title>
+</head>
+<body>
+    <h1>Send Reminder</h1>
+    <p>Are you sure you want to send a reminder to {{ book['borrowed_by'] }} to return {{ book['title'] }}?</p>
+    <form method="POST">
+        <button type="submit">Send Reminder</button>
+        <a href="{{ url_for('admin_dashboard') }}">Cancel</a>
+    </form>
+</body>
+</html>

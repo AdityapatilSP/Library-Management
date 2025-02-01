@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Panel</h1>
+        <h2>Borrowed Books</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Book ID</th>
+                    <th>Title</th>
+                    <th>User Email</th>
+                    <th>Due Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book_id, info in borrowed_books.items() %}
+                <tr>
+                    <td>{{ book_id }}</td>
+                    <td>{{ books[book_id - 1].title }}</td>
+                    <td>{{ info.user_email }}</td>
+                    <td>{{ info.due_date.strftime('%Y-%m-%d') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <form method="POST">
+            <button type="submit" class="btn">Send Reminders</button>
+        </form>
+        <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+    </div>
+</body>
+</html>
